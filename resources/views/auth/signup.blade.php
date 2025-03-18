@@ -8,26 +8,43 @@
   <div class="card-body register-card-body">
     <p class="register-box-msg text-center fw-bold">Register a new membership</p>
 
-    <form action="../index3.html" method="post">
+    <form action="{{ route('signup') }}" method="post">
+      @csrf
       <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Full Name" />
+        <input type="text" name="name" class="form-control" placeholder="Full Name" required/>
         <div class="input-group-text"><span class="bi bi-person"></span></div>
       </div>
+      @error('name')
+        <div class="text-danger">{{ $message }}</div>
+      @enderror
 
       <div class="input-group mb-3">
-        <input type="email" class="form-control" placeholder="Email" />
+        <input type="email" name="email" class="form-control" placeholder="Email"  required/>
         <div class="input-group-text"><span class="bi bi-envelope"></span></div>
       </div>
+      @error('email')
+        <div class="text-danger">{{ $message }}</div>
+      @enderror
 
       <div class="input-group mb-3">
-        <input type="password" class="form-control" placeholder="Password" />
+        <input type="password" name="password" class="form-control" placeholder="Password"  required/>
         <div class="input-group-text"><span class="bi bi-lock-fill"></span></div>
       </div>
+      @error('password')
+        <div class="text-danger">{{ $message }}</div>
+      @enderror
+
+      <div class="d-none">
+        <input type="text" name="role" class="form-control" value="{{ $role }}" readonly  required/>
+      </div>
+      @error('role')
+        <div class="text-danger">{{ $message }}</div>
+      @enderror
 
       <div class="row">
         <div class="col-8">
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+            <input class="form-check-input" type="checkbox" id="flexCheckDefault" required/>
             <label class="form-check-label" for="flexCheckDefault">
               I agree to the <a href="#" class="text-decoration-none">terms</a>
             </label>

@@ -11,7 +11,7 @@
         />
         <!--end::Brand Image-->
         <!--begin::Brand Text-->
-        <span class="brand-text fw-light">AdminLTE 4</span>
+        <span class="brand-text fw-light">AdminLTE</span>
         <!--end::Brand Text-->
       </a>
       <!--end::Brand Link-->
@@ -27,22 +27,28 @@
           role="menu"
           data-accordion="false"
         >
-          <li class="nav-item menu-open">
+          {{-- <li class="nav-item menu-open">
             <a href="#" class="nav-link active">
               <i class="nav-icon bi bi-speedometer"></i>
               <p>
                 Dashboard
                 <i class="nav-arrow bi bi-chevron-right"></i>
               </p>
-            </a>
-            <ul class="nav nav-treeview">
+            </a> --}}
+            {{-- <ul class="nav nav-treeview"> --}}
               <li class="nav-item">
-                <a href=" {{ asset('admin/index.html') }}" class="nav-link active">
-                  <i class="nav-icon bi bi-circle"></i>
-                  <p>Dashboard v1</p>
+                <a href="dashboard" class="nav-link active">
+                  {{-- <i class="nav-icon bi bi-circle"></i> --}}
+                  <p>Dashboard</p>
                 </a>
               </li>
               <li class="nav-item">
+                <a href=" {{ asset('admin/index.html') }}" class="nav-link">
+                  {{-- <i class="nav-icon bi bi-circle"></i> --}}
+                  <p>Manage Users</p>
+                </a>
+              </li>
+              {{-- <li class="nav-item">
                 <a href=" {{ asset('admin/dist/pages/index2.html') }}" class="nav-link">
                   <i class="nav-icon bi bi-circle"></i>
                   <p>Dashboard v2</p>
@@ -53,6 +59,35 @@
                   <i class="nav-icon bi bi-circle"></i>
                   <p>Dashboard v3</p>
                 </a>
+              </li> --}}
+            {{-- </ul> --}}
+          {{-- </li> --}}
+          <li class="nav-item menu-open">
+            <a href="#" class="nav-link">
+              <i class="nav-icon bi bi-speedometer"></i>
+              <p>
+                User Content
+                <i class="nav-arrow bi bi-chevron-right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href=" {{ asset('admin/index.html') }}" class="nav-link">
+                  <i class="nav-icon bi bi-circle"></i>
+                  <p>Admin</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href=" {{ asset('admin/dist/pages/index2.html') }}" class="nav-link">
+                  <i class="nav-icon bi bi-circle"></i>
+                  <p>Author</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href=" {{ asset('admin/dist/pages/index3.html') }}" class="nav-link">
+                  <i class="nav-icon bi bi-circle"></i>
+                  <p>Student</p>
+                </a>
               </li>
             </ul>
           </li>
@@ -62,7 +97,7 @@
               <p>Theme Generate</p>
             </a>
           </li>
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon bi bi-box-seam-fill"></i>
               <p>
@@ -190,8 +225,8 @@
                 </a>
               </li>
             </ul>
-          </li>
-          <li class="nav-item">
+          </li> --}}
+          {{-- <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon bi bi-table"></i>
               <p>
@@ -207,7 +242,7 @@
                 </a>
               </li>
             </ul>
-          </li>
+          </li> --}}
           <li class="nav-header">EXAMPLES</li>
           <li class="nav-item">
             <a href="#" class="nav-link">
@@ -272,65 +307,14 @@
               </li>
             </ul>
           </li>
-          <li class="nav-header">DOCUMENTATIONS</li>
-          <li class="nav-item">
-            <a href="./docs/introduction.html" class="nav-link">
-              <i class="nav-icon bi bi-download"></i>
-              <p>Installation</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="./docs/layout.html" class="nav-link">
-              <i class="nav-icon bi bi-grip-horizontal"></i>
-              <p>Layout</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="./docs/color-mode.html" class="nav-link">
+          {{-- <li class="nav-item">
+            <a href=" {{ asset('admin/dist/pages/docs/color-mode.html') }}" class="nav-link">
               <i class="nav-icon bi bi-star-half"></i>
               <p>Color Mode</p>
             </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon bi bi-ui-checks-grid"></i>
-              <p>
-                Components
-                <i class="nav-arrow bi bi-chevron-right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="./docs/components/main-header.html" class="nav-link">
-                  <i class="nav-icon bi bi-circle"></i>
-                  <p>Main Header</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="./docs/components/main-sidebar.html" class="nav-link">
-                  <i class="nav-icon bi bi-circle"></i>
-                  <p>Main Sidebar</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon bi bi-filetype-js"></i>
-              <p>
-                Javascript
-                <i class="nav-arrow bi bi-chevron-right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="./docs/javascript/treeview.html" class="nav-link">
-                  <i class="nav-icon bi bi-circle"></i>
-                  <p>Treeview</p>
-                </a>
-              </li>
-            </ul>
-          </li>
+          </li> --}}
+          
+          
           <li class="nav-item">
             <a href="./docs/browser-support.html" class="nav-link">
               <i class="nav-icon bi bi-browser-edge"></i>
@@ -355,71 +339,7 @@
               <p>License</p>
             </a>
           </li>
-          <li class="nav-header">MULTI LEVEL EXAMPLE</li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon bi bi-circle-fill"></i>
-              <p>Level 1</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon bi bi-circle-fill"></i>
-              <p>
-                Level 1
-                <i class="nav-arrow bi bi-chevron-right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon bi bi-circle"></i>
-                  <p>Level 2</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon bi bi-circle"></i>
-                  <p>
-                    Level 2
-                    <i class="nav-arrow bi bi-chevron-right"></i>
-                  </p>
-                </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="nav-icon bi bi-record-circle-fill"></i>
-                      <p>Level 3</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="nav-icon bi bi-record-circle-fill"></i>
-                      <p>Level 3</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="nav-icon bi bi-record-circle-fill"></i>
-                      <p>Level 3</p>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon bi bi-circle"></i>
-                  <p>Level 2</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon bi bi-circle-fill"></i>
-              <p>Level 1</p>
-            </a>
-          </li>
+          
           <li class="nav-header">LABELS</li>
           <li class="nav-item">
             <a href="#" class="nav-link">

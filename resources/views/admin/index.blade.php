@@ -103,7 +103,7 @@
                 <div class="small-box text-bg-primary">
                   <div class="inner">
                     <h3>150</h3>
-                    <p>New Orders</p>
+                    <p>Total Books</p>
                   </div>
                   <svg
                     class="small-box-icon"
@@ -264,7 +264,7 @@
                         <!-- /.direct-chat-infos -->
                         <img
                           class="direct-chat-img"
-                          src=" asset('admin/dist/assets/img/user1-128x128.jpg"
+                          src="{{ asset('admin/dist/assets/img/user1-128x128.jpg') }}"
                           alt="message user image"
                         />
                         <!-- /.direct-chat-img -->
@@ -283,7 +283,7 @@
                         <!-- /.direct-chat-infos -->
                         <img
                           class="direct-chat-img"
-                          src=" asset('admin/dist/assets/img/user3-128x128.jpg"
+                          src="{{ asset('admin/dist/assets/img/user3-128x128.jpg') }}"
                           alt="message user image"
                         />
                         <!-- /.direct-chat-img -->
@@ -300,7 +300,7 @@
                         <!-- /.direct-chat-infos -->
                         <img
                           class="direct-chat-img"
-                          src=" {{ asset('admin/dist/assets/img/user1-128x128.jpg')}}"
+                          src="{{ asset('admin/dist/assets/img/user1-128x128.jpg') }}"
                           alt="message user image"
                         />
                         <!-- /.direct-chat-img -->
@@ -319,7 +319,7 @@
                         <!-- /.direct-chat-infos -->
                         <img
                           class="direct-chat-img"
-                          src=" {{ asset('admin/dist/assets/img/user3-128x128.jpg') }}"
+                          src="{{ asset('admin/dist/assets/img/user3-128x128.jpg') }}"
                           alt="message user image"
                         />
                         <!-- /.direct-chat-img -->
@@ -336,7 +336,7 @@
                           <a href="#">
                             <img
                               class="contacts-list-img"
-                              src=" {{ asset('admin/dist/assets/img/user1-128x128.jpg') }}"
+                              src="{{ asset('admin/dist/assets/img/user1-128x128.jpg') }}"
                               alt="User Avatar"
                             />
                             <div class="contacts-list-info">
@@ -354,7 +354,7 @@
                           <a href="#">
                             <img
                               class="contacts-list-img"
-                              src=" {{ asset('admin/dist/assets/img/user7-128x128.jpg') }}"
+                              src="{{ asset('admin/dist/assets/img/user7-128x128.jpg') }}"
                               alt="User Avatar"
                             />
                             <div class="contacts-list-info">
@@ -372,7 +372,7 @@
                           <a href="#">
                             <img
                               class="contacts-list-img"
-                              src=" {{ asset('admin/dist/assets/img/user3-128x128.jpg') }}"
+                              src="{{ asset('admin/dist/assets/img/user3-128x128.jpg') }}"
                               alt="User Avatar"
                             />
                             <div class="contacts-list-info">
@@ -390,7 +390,7 @@
                           <a href="#">
                             <img
                               class="contacts-list-img"
-                              src=" {{ asset('admin/dist/assets/img/user5-128x128.jpg') }}"
+                              src="{{ asset('admin/dist/assets/img/user5-128x128.jpg') }}"
                               alt="User Avatar"
                             />
                             <div class="contacts-list-info">
@@ -408,7 +408,7 @@
                           <a href="#">
                             <img
                               class="contacts-list-img"
-                              src=" {{ asset('admin/dist/assets/img/user6-128x128.jpg') }}"
+                              src="{{ asset('admin/dist/assets/img/user6-128x128.jpg') }}"
                               alt="User Avatar"
                             />
                             <div class="contacts-list-info">
@@ -426,7 +426,7 @@
                           <a href="#">
                             <img
                               class="contacts-list-img"
-                              src=" {{ asset('admin/dist/assets/img/user8-128x128.jpg') }}"
+                              src="{{ asset('admin/dist/assets/img/user8-128x128.jpg') }}"
                               alt="User Avatar"
                             />
                             <div class="contacts-list-info">
