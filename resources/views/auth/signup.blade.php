@@ -8,7 +8,7 @@
   <div class="card-body register-card-body">
     <p class="register-box-msg text-center fw-bold">Register a new membership</p>
 
-    <form action="{{ route('signup') }}" method="post">
+    <form action="/signup" method="post">
       @csrf
       <div class="input-group mb-3">
         <input type="text" name="name" class="form-control" placeholder="Full Name" required/>

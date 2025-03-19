@@ -16,7 +16,11 @@ class SignupController extends Controller
 {
     public function get(Request $request){
         if(Auth::check()){
-            return redirect()->route('dashboard');
+            if(Auth::user()['role']==='student' || Auth::user()['role']==="author"){
+                return redirect('/home');
+            }else{
+                return redirect('/dashboard');
+            }
         }
         $role = "Student";
         return view('auth.signup',compact('role'));
@@ -28,7 +32,7 @@ class SignupController extends Controller
             "name"     => "required|string|min:3|max:20",
             "email"    => "required|email|unique:users,email|max:80",
             "password" => "required|string|min:8|max:16|regex:/[a-z]/|regex:/[A-Z]/|regex:/[0-9]/|regex:/[@$!%*?&]/",
-            "role"     => "required|string|in:Super Admin,Admin,Author,Student"
+            "role"     => "required|string|in:author,student"
         ]);
 
         try{
@@ -50,7 +54,7 @@ class SignupController extends Controller
 
             DB::commit();
 
-            return redirect()->route('dashboard')->with('success', 'User registered successfully!');
+            return redirect('dashboard')->with('success', 'User registered successfully!');
         }catch (Exception $e){
             DB::rollback();
             return redirect()->back()->withErrors($e)->withInput();

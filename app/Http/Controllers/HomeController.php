@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class DashboardController extends Controller
+class HomeController extends Controller
 {
     public function get(Request $request){
-        return view('admin.dashboard');
+        return view('home.index');
     }
 }

@@ -71,12 +71,16 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+
+              @if(Auth::user()->isnotSuperAdmin())
               <li class="nav-item">
                 <a href=" {{ asset('admin/index.html') }}" class="nav-link">
                   <i class="nav-icon bi bi-circle"></i>
                   <p>Admin</p>
                 </a>
               </li>
+              @endif
+              
               <li class="nav-item">
                 <a href=" {{ asset('admin/dist/pages/index2.html') }}" class="nav-link">
                   <i class="nav-icon bi bi-circle"></i>

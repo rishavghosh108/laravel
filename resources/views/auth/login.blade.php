@@ -10,15 +10,18 @@
       <div class="card-body login-card-body">
         <p class="login-box-msg">Sign in to start your session</p>
 
-        <form action="../index3.html" method="post">
+        <form action="/login" method="post">
+          @csrf
           <div class="input-group mb-3">
-            <input type="email" class="form-control" placeholder="Email" />
+            <input type="email" name="email" class="form-control" placeholder="Email" required/>
             <div class="input-group-text"><span class="bi bi-envelope"></span></div>
+            <div class="error_group"><ul class="error">@error('email') {{ $message }} @enderror</ul></div>
           </div>
 
           <div class="input-group mb-3">
-            <input type="password" class="form-control" placeholder="Password" />
+            <input type="password" name="password" class="form-control" placeholder="Password" required/>
             <div class="input-group-text"><span class="bi bi-lock-fill"></span></div>
+            <div class="error_group"><ul class="error">@error('password') {{ $message }} @enderror</ul></div>
           </div>
 
           <div class="row">
@@ -35,7 +38,6 @@
               </div>
             </div>
           </div>
-          <!--end::Row-->
         </form>
 
         <p class="mb-1"><a href="forgot-password.html">I forgot my password</a></p>
@@ -52,5 +54,19 @@
     max-width: 400px; 
     width: 100%;
     padding: 5px;
+  }
+  .error_group{
+    max-width: 343px;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    position: absolute;
+    top: -10px;
+  }
+  .error {
+    text-align: center;
+    color: red;
+    font-size: 14px;
+    z-index: 100;
   }
 </style>
