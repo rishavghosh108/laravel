@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Models\User;
 use App\Models\Role;
-use App\Models\UserRole;
 
 class SignupController extends Controller
 {
@@ -22,7 +21,7 @@ class SignupController extends Controller
                 return redirect('/dashboard');
             }
         }
-        $role = "Student";
+        $role = "student";
         return view('auth.signup',compact('role'));
     }
 
@@ -45,19 +44,19 @@ class SignupController extends Controller
                 "role"     => $load_data['role'],
             ]);
 
-            $role = Role::where('name',  $load_data['role'])->first();
-
-            UserRole::Create([
-                "user_id" => $user->id,
-                "role_id" => $role->id
-            ]);
+            $user->roles()->attach(Role::where('role_name',  $load_data['role'])->first());
 
             DB::commit();
 
-            return redirect('dashboard')->with('success', 'User registered successfully!');
+            $credentials = ["email" =>$load_data['email'], "password" => $load_data['password']];
+
+            if(Auth::attempt($credentials)){
+                return redirect('/');
+            }
+            return redirect('login/')->with('success', 'User registered successfully!');
         }catch (Exception $e){
             DB::rollback();
-            return redirect()->back()->withErrors($e)->withInput();
+            return redirect()->back()->withErrors("hello")->withInput();
         }
     }
 }

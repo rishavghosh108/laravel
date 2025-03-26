@@ -28,6 +28,10 @@ class LoginController extends Controller
         ]);
 
         $user = User::where('email', $load_data['email'])->first();
+        
+        if($user && $user->status === "suspended"){
+            return back()->withErrors(['email'=>'User has been Suspended!'])->withInput();
+        }
 
         if(!$user){
             return back()->withErrors(['email'=>'User does not exist!'])->withInput();
@@ -39,7 +43,7 @@ class LoginController extends Controller
         $credentials = ["email" =>$load_data['email'], "password" => $load_data['password']];
 
         if(Auth::attempt($credentials)){
-            return '69';
+            return redirect('/');
         }else{
             return back()->withErrors(['password'=>'Invalid password'])->withInput();
         }

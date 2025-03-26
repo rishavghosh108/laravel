@@ -13,7 +13,10 @@ return new class extends Migration
     {
         Schema::create('paths', function (Blueprint $table) {
             $table->id();
+
+            $table->string('path_name');
             $table->string('path');
+            
             $table->timestamps();
         });
     }

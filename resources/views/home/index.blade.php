@@ -28,51 +28,71 @@
 
 		<div class="top-content">
 			<div class="container-fluid">
-				<div class="row">
+				<div class="row align-items-center d-flex">
+					<!-- Social Links -->
 					<div class="col-md-6">
 						<div class="social-links">
-							<ul>
-								<li>
-									<a href="#"><i class="icon icon-facebook"></i></a>
-								</li>
-								<li>
-									<a href="#"><i class="icon icon-twitter"></i></a>
-								</li>
-								<li>
-									<a href="#"><i class="icon icon-youtube-play"></i></a>
-								</li>
-								<li>
-									<a href="#"><i class="icon icon-behance-square"></i></a>
-								</li>
+							<ul class="d-flex gap-3 list-unstyled mb-0">
+								<li><a href="#"><i class="icon icon-facebook"></i></a></li>
+								<li><a href="#"><i class="icon icon-twitter"></i></a></li>
+								<li><a href="#"><i class="icon icon-youtube-play"></i></a></li>
+								<li><a href="#"><i class="icon icon-behance-square"></i></a></li>
 							</ul>
-						</div><!--social-links-->
+						</div>
 					</div>
+
+					
+		
+					<!-- Right Elements -->
 					<div class="col-md-6">
-						<div class="right-element">
-							<a href="#" class="user-account for-buy"><i
-									class="icon icon-user"></i><span>Account</span></a>
-							<a href="#" class="cart for-buy"><i class="icon icon-clipboard"></i><span>Cart:(0
-									$)</span></a>
-
-							<div class="action-menu">
-
-								<div class="search-bar">
+						
+						<div class="right-element d-flex gap-3">
+							<div class="search-bar">
+								<form role="search" method="get" class="search-box">
+									<input class="search-field text search-input" placeholder="Search" type="search">
 									<a href="#" class="search-button search-toggle" data-selector="#header-wrap">
 										<i class="icon icon-search"></i>
 									</a>
-									<form role="search" method="get" class="search-box">
-										<input class="search-field text search-input" placeholder="Search"
-											type="search">
-									</form>
-								</div>
+								</form>
 							</div>
 
-						</div><!--top-right-->
-					</div>
+							<a href="{{ Auth::check() ? '#' : '/login' }}" 
+							class="user-account for-buy" 
+							data-bs-toggle="{{ Auth::check() ? 'collapse' : '' }}" 
+							data-bs-target="#profileContainer" 
+							aria-expanded="false" 
+							aria-controls="profileContainer">
+								<i class="icon icon-user"></i><span>Account</span>
+							</a>
 
+							<div class="collapse position-absolute z-3 w-25 mt-5" id="profileContainer">
+								@if (Auth::check())
+								<div class="profile-box px-5 pt-3 rounded shadow position-relative top-100" style="background-color: rgba(243, 186, 101, 0.768);">
+									<div class="text-center">
+										<img src="{{ asset('admin/dist/assets/img/user2-160x160.jpg') }}" 
+											class="rounded-circle shadow mb-2" alt="User Image" />
+										<ul class="m-0 list-unstyled">
+											<li>{{ Auth::user()->name }} ({{ Auth::user()->role }})</li>
+											<li>{{ Auth::user()->email }}</li>
+										</ul>
+									</div>
+									<form action="/logout" method="POST" class="text-center">
+										@csrf
+										<button class="btn btn-danger w-100 p-0 border-warning-subtle rounded">Sign out</button>
+									</form>
+								</div>
+								@endif
+							</div>
+									
+							<a href="#" class="cart for-buy">
+								<i class="icon icon-clipboard"></i><span>Cart: (0 $)</span>
+							</a>
+						</div>
+					</div>
 				</div>
 			</div>
-		</div><!--top-content-->
+		</div>
+		<!--top-content-->
 
 		<header id="header">
 			<div class="container-fluid">
@@ -80,7 +100,8 @@
 
 					<div class="col-md-2">
 						<div class="main-logo">
-							<a href="{{asset('booksaw/index.html') }}"><img src=" {{ asset('booksaw/images/main-logo.png') }}" alt="logo"></a>
+							<a href="{{asset('booksaw/index.html') }}"><img
+									src=" {{ asset('booksaw/images/main-logo.png') }}" alt="logo"></a>
 						</div>
 
 					</div>
@@ -88,7 +109,7 @@
 					<div class="col-md-10">
 
 						<nav id="navbar">
-							<div class="main-menu stellarnav">
+							<div class="main-menu stellarnav z-0">
 								<ul class="menu-list">
 									<li class="menu-item active"><a href="#home">Home</a></li>
 									<li class="menu-item has-sub">
@@ -218,7 +239,8 @@
 							<div class="col-md-3">
 								<div class="product-item">
 									<figure class="product-style">
-										<img src="{{ asset('booksaw/images/product-item1.jpg') }}" alt="Books" class="product-item">
+										<img src="{{ asset('booksaw/images/product-item1.jpg') }}" alt="Books"
+											class="product-item">
 										<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to
 											Cart</button>
 									</figure>
@@ -233,7 +255,8 @@
 							<div class="col-md-3">
 								<div class="product-item">
 									<figure class="product-style">
-										<img src="{{ asset('booksaw/images/product-item2.jpg') }}" alt="Books" class="product-item">
+										<img src="{{ asset('booksaw/images/product-item2.jpg') }}" alt="Books"
+											class="product-item">
 										<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to
 											Cart</button>
 									</figure>
@@ -248,7 +271,8 @@
 							<div class="col-md-3">
 								<div class="product-item">
 									<figure class="product-style">
-										<img src="{{ asset('booksaw/images/product-item3.jpg') }}" alt="Books" class="product-item">
+										<img src="{{ asset('booksaw/images/product-item3.jpg') }}" alt="Books"
+											class="product-item">
 										<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to
 											Cart</button>
 									</figure>
@@ -263,7 +287,8 @@
 							<div class="col-md-3">
 								<div class="product-item">
 									<figure class="product-style">
-										<img src="{{ asset('booksaw/images/product-item4.jpg') }}" alt="Books" class="product-item">
+										<img src="{{ asset('booksaw/images/product-item4.jpg') }}" alt="Books"
+											class="product-item">
 										<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to
 											Cart</button>
 									</figure>
@@ -306,7 +331,8 @@
 
 						<div class="col-md-6">
 							<figure class="products-thumb">
-								<img src="{{ asset('booksaw/images/single-image.jpg') }}" alt="book" class="single-image">
+								<img src="{{ asset('booksaw/images/single-image.jpg') }}" alt="book"
+									class="single-image">
 							</figure>
 						</div>
 
@@ -366,8 +392,10 @@
 								<div class="col-md-3">
 									<div class="product-item">
 										<figure class="product-style">
-											<img src="{{ asset('booksaw/images/tab-item1.jpg') }}" alt="Books" class="product-item">
-											<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to
+											<img src="{{ asset('booksaw/images/tab-item1.jpg') }}" alt="Books"
+												class="product-item">
+											<button type="button" class="add-to-cart"
+												data-product-tile="add-to-cart">Add to
 												Cart</button>
 										</figure>
 										<figcaption>
@@ -381,8 +409,10 @@
 								<div class="col-md-3">
 									<div class="product-item">
 										<figure class="product-style">
-											<img src="{{ asset('booksaw/images/tab-item2.jpg') }}" alt="Books" class="product-item">
-											<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to
+											<img src="{{ asset('booksaw/images/tab-item2.jpg') }}" alt="Books"
+												class="product-item">
+											<button type="button" class="add-to-cart"
+												data-product-tile="add-to-cart">Add to
 												Cart</button>
 										</figure>
 										<figcaption>
@@ -396,8 +426,10 @@
 								<div class="col-md-3">
 									<div class="product-item">
 										<figure class="product-style">
-											<img src="{{ asset('booksaw/images/tab-item3.jpg') }}" alt="Books" class="product-item">
-											<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to
+											<img src="{{ asset('booksaw/images/tab-item3.jpg') }}" alt="Books"
+												class="product-item">
+											<button type="button" class="add-to-cart"
+												data-product-tile="add-to-cart">Add to
 												Cart</button>
 										</figure>
 										<figcaption>
@@ -411,8 +443,10 @@
 								<div class="col-md-3">
 									<div class="product-item">
 										<figure class="product-style">
-											<img src="{{ asset('booksaw/images/tab-item4.jpg') }}" alt="Books" class="product-item">
-											<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to
+											<img src="{{ asset('booksaw/images/tab-item4.jpg') }}" alt="Books"
+												class="product-item">
+											<button type="button" class="add-to-cart"
+												data-product-tile="add-to-cart">Add to
 												Cart</button>
 										</figure>
 										<figcaption>
@@ -429,8 +463,10 @@
 								<div class="col-md-3">
 									<div class="product-item">
 										<figure class="product-style">
-											<img src="{{ asset('booksaw/images/tab-item5.jpg') }}" alt="Books" class="product-item">
-											<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to
+											<img src="{{ asset('booksaw/images/tab-item5.jpg') }}" alt="Books"
+												class="product-item">
+											<button type="button" class="add-to-cart"
+												data-product-tile="add-to-cart">Add to
 												Cart</button>
 										</figure>
 										<figcaption>
@@ -444,8 +480,10 @@
 								<div class="col-md-3">
 									<div class="product-item">
 										<figure class="product-style">
-											<img src="{{ asset('booksaw/images/tab-item6.jpg') }}" alt="Books" class="product-item">
-											<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to
+											<img src="{{ asset('booksaw/images/tab-item6.jpg') }}" alt="Books"
+												class="product-item">
+											<button type="button" class="add-to-cart"
+												data-product-tile="add-to-cart">Add to
 												Cart</button>
 										</figure>
 										<figcaption>
@@ -459,8 +497,10 @@
 								<div class="col-md-3">
 									<div class="product-item">
 										<figure class="product-style">
-											<img src="{{ asset('booksaw/images/tab-item7.jpg') }}" alt="Books" class="product-item">
-											<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to
+											<img src="{{ asset('booksaw/images/tab-item7.jpg') }}" alt="Books"
+												class="product-item">
+											<button type="button" class="add-to-cart"
+												data-product-tile="add-to-cart">Add to
 												Cart</button>
 										</figure>
 										<figcaption>
@@ -474,8 +514,10 @@
 								<div class="col-md-3">
 									<div class="product-item">
 										<figure class="product-style">
-											<img src="{{ asset('booksaw/images/tab-item8.jpg') }}" alt="Books" class="product-item">
-											<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to
+											<img src="{{ asset('booksaw/images/tab-item8.jpg') }}" alt="Books"
+												class="product-item">
+											<button type="button" class="add-to-cart"
+												data-product-tile="add-to-cart">Add to
 												Cart</button>
 										</figure>
 										<figcaption>
@@ -494,8 +536,10 @@
 								<div class="col-md-3">
 									<div class="product-item">
 										<figure class="product-style">
-											<img src="{{ asset('booksaw/images/tab-item2.jpg') }}" alt="Books" class="product-item">
-											<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to
+											<img src="{{ asset('booksaw/images/tab-item2.jpg') }}" alt="Books"
+												class="product-item">
+											<button type="button" class="add-to-cart"
+												data-product-tile="add-to-cart">Add to
 												Cart</button>
 										</figure>
 										<figcaption>
@@ -509,8 +553,10 @@
 								<div class="col-md-3">
 									<div class="product-item">
 										<figure class="product-style">
-											<img src="{{ asset('booksaw/images/tab-item4.jpg') }}" alt="Books" class="product-item">
-											<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to
+											<img src="{{ asset('booksaw/images/tab-item4.jpg') }}" alt="Books"
+												class="product-item">
+											<button type="button" class="add-to-cart"
+												data-product-tile="add-to-cart">Add to
 												Cart</button>
 										</figure>
 										<figcaption>
@@ -524,8 +570,10 @@
 								<div class="col-md-3">
 									<div class="product-item">
 										<figure class="product-style">
-											<img src="{{ asset('booksaw/images/tab-item6.jpg') }}" alt="Books" class="product-item">
-											<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to
+											<img src="{{ asset('booksaw/images/tab-item6.jpg') }}" alt="Books"
+												class="product-item">
+											<button type="button" class="add-to-cart"
+												data-product-tile="add-to-cart">Add to
 												Cart</button>
 										</figure>
 										<figcaption>
@@ -539,8 +587,10 @@
 								<div class="col-md-3">
 									<div class="product-item">
 										<figure class="product-style">
-											<img src="{{ asset('booksaw/images/tab-item8.jpg') }}" alt="Books" class="product-item">
-											<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to
+											<img src="{{ asset('booksaw/images/tab-item8.jpg') }}" alt="Books"
+												class="product-item">
+											<button type="button" class="add-to-cart"
+												data-product-tile="add-to-cart">Add to
 												Cart</button>
 										</figure>
 										<figcaption>
@@ -559,8 +609,10 @@
 								<div class="col-md-3">
 									<div class="product-item">
 										<figure class="product-style">
-											<img src="{{ asset('booksaw/images/tab-item1.jpg') }}" alt="Books" class="product-item">
-											<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to
+											<img src="{{ asset('booksaw/images/tab-item1.jpg') }}" alt="Books"
+												class="product-item">
+											<button type="button" class="add-to-cart"
+												data-product-tile="add-to-cart">Add to
 												Cart</button>
 										</figure>
 										<figcaption>
@@ -574,8 +626,10 @@
 								<div class="col-md-3">
 									<div class="product-item">
 										<figure class="product-style">
-											<img src="{{ asset('booksaw/images/tab-item3.jpg') }}" alt="Books" class="product-item">
-											<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to
+											<img src="{{ asset('booksaw/images/tab-item3.jpg') }}" alt="Books"
+												class="product-item">
+											<button type="button" class="add-to-cart"
+												data-product-tile="add-to-cart">Add to
 												Cart</button>
 										</figure>
 										<figcaption>
@@ -589,8 +643,10 @@
 								<div class="col-md-3">
 									<div class="product-item">
 										<figure class="product-style">
-											<img src="{{ asset('booksaw/images/tab-item5.jpg') }}" alt="Books" class="product-item">
-											<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to
+											<img src="{{ asset('booksaw/images/tab-item5.jpg') }}" alt="Books"
+												class="product-item">
+											<button type="button" class="add-to-cart"
+												data-product-tile="add-to-cart">Add to
 												Cart</button>
 										</figure>
 										<figcaption>
@@ -604,8 +660,10 @@
 								<div class="col-md-3">
 									<div class="product-item">
 										<figure class="product-style">
-											<img src="{{ asset('booksaw/images/tab-item7.jpg') }}" alt="Books" class="product-item">
-											<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to
+											<img src="{{ asset('booksaw/images/tab-item7.jpg') }}" alt="Books"
+												class="product-item">
+											<button type="button" class="add-to-cart"
+												data-product-tile="add-to-cart">Add to
 												Cart</button>
 										</figure>
 										<figcaption>
@@ -623,8 +681,10 @@
 								<div class="col-md-3">
 									<div class="product-item">
 										<figure class="product-style">
-											<img src="{{ asset('booksaw/images/tab-item1.jpg') }}" alt="Books" class="product-item">
-											<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to
+											<img src="{{ asset('booksaw/images/tab-item1.jpg') }}" alt="Books"
+												class="product-item">
+											<button type="button" class="add-to-cart"
+												data-product-tile="add-to-cart">Add to
 												Cart</button>
 										</figure>
 										<figcaption>
@@ -638,8 +698,10 @@
 								<div class="col-md-3">
 									<div class="product-item">
 										<figure class="product-style">
-											<img src="{{ asset('booksaw/images/tab-item3.jpg') }}" alt="Books" class="product-item">
-											<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to
+											<img src="{{ asset('booksaw/images/tab-item3.jpg') }}" alt="Books"
+												class="product-item">
+											<button type="button" class="add-to-cart"
+												data-product-tile="add-to-cart">Add to
 												Cart</button>
 										</figure>
 										<figcaption>
@@ -653,8 +715,10 @@
 								<div class="col-md-3">
 									<div class="product-item">
 										<figure class="product-style">
-											<img src="{{ asset('booksaw/images/tab-item5.jpg') }}" alt="Books" class="product-item">
-											<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to
+											<img src="{{ asset('booksaw/images/tab-item5.jpg') }}" alt="Books"
+												class="product-item">
+											<button type="button" class="add-to-cart"
+												data-product-tile="add-to-cart">Add to
 												Cart</button>
 										</figure>
 										<figcaption>
@@ -668,8 +732,10 @@
 								<div class="col-md-3">
 									<div class="product-item">
 										<figure class="product-style">
-											<img src="{{ asset('booksaw/images/tab-item7.jpg') }}" alt="Books" class="product-item">
-											<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to
+											<img src="{{ asset('booksaw/images/tab-item7.jpg') }}" alt="Books"
+												class="product-item">
+											<button type="button" class="add-to-cart"
+												data-product-tile="add-to-cart">Add to
 												Cart</button>
 										</figure>
 										<figcaption>
@@ -687,8 +753,10 @@
 								<div class="col-md-3">
 									<div class="product-item">
 										<figure class="product-style">
-											<img src="{{ asset('booksaw/images/tab-item5.jpg') }}" alt="Books" class="product-item">
-											<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to
+											<img src="{{ asset('booksaw/images/tab-item5.jpg') }}" alt="Books"
+												class="product-item">
+											<button type="button" class="add-to-cart"
+												data-product-tile="add-to-cart">Add to
 												Cart</button>
 										</figure>
 										<figcaption>
@@ -702,8 +770,10 @@
 								<div class="col-md-3">
 									<div class="product-item">
 										<figure class="product-style">
-											<img src="{{ asset('booksaw/images/tab-item7.jpg') }}" alt="Books" class="product-item">
-											<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to
+											<img src="{{ asset('booksaw/images/tab-item7.jpg') }}" alt="Books"
+												class="product-item">
+											<button type="button" class="add-to-cart"
+												data-product-tile="add-to-cart">Add to
 												Cart</button>
 										</figure>
 										<figcaption>
@@ -721,8 +791,10 @@
 								<div class="col-md-3">
 									<div class="product-item">
 										<figure class="product-style">
-											<img src="{{ asset('booksaw/images/tab-item5.jpg') }}" alt="Books" class="product-item">
-											<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to
+											<img src="{{ asset('booksaw/images/tab-item5.jpg') }}" alt="Books"
+												class="product-item">
+											<button type="button" class="add-to-cart"
+												data-product-tile="add-to-cart">Add to
 												Cart</button>
 										</figure>
 										<figcaption>
@@ -736,8 +808,10 @@
 								<div class="col-md-3">
 									<div class="product-item">
 										<figure class="product-style">
-											<img src="{{ asset('booksaw/images/tab-item7.jpg') }}" alt="Books" class="product-item">
-											<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to
+											<img src="{{ asset('booksaw/images/tab-item7.jpg') }}" alt="Books"
+												class="product-item">
+											<button type="button" class="add-to-cart"
+												data-product-tile="add-to-cart">Add to
 												Cart</button>
 										</figure>
 										<figcaption>
@@ -785,7 +859,8 @@
 						<div class="grid product-grid">
 							<div class="product-item">
 								<figure class="product-style">
-									<img src="{{ asset('booksaw/images/product-item5.jpg') }}" alt="Books" class="product-item">
+									<img src="{{ asset('booksaw/images/product-item5.jpg') }}" alt="Books"
+										class="product-item">
 									<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to
 										Cart</button>
 								</figure>
@@ -795,12 +870,13 @@
 									<div class="item-price">
 										<span class="prev-price">$ 50.00</span>$ 40.00
 									</div>
-								</div>
+							</div>
 							</figcaption>
 
 							<div class="product-item">
 								<figure class="product-style">
-									<img src="{{ asset('booksaw/images/product-item6.jpg') }}" alt="Books" class="product-item">
+									<img src="{{ asset('booksaw/images/product-item6.jpg') }}" alt="Books"
+										class="product-item">
 									<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to
 										Cart</button>
 								</figure>
@@ -810,12 +886,13 @@
 									<div class="item-price">
 										<span class="prev-price">$ 30.00</span>$ 38.00
 									</div>
-								</div>
+							</div>
 							</figcaption>
 
 							<div class="product-item">
 								<figure class="product-style">
-									<img src="{{ asset('booksaw/images/product-item7.jpg') }}" alt="Books" class="product-item">
+									<img src="{{ asset('booksaw/images/product-item7.jpg') }}" alt="Books"
+										class="product-item">
 									<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to
 										Cart</button>
 								</figure>
@@ -825,12 +902,13 @@
 									<div class="item-price">
 										<span class="prev-price">$ 35.00</span>$ 45.00
 									</div>
-								</div>
+							</div>
 							</figcaption>
 
 							<div class="product-item">
 								<figure class="product-style">
-									<img src="{{ asset('booksaw/images/product-item8.jpg') }}" alt="Books" class="product-item">
+									<img src="{{ asset('booksaw/images/product-item8.jpg') }}" alt="Books"
+										class="product-item">
 									<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to
 										Cart</button>
 								</figure>
@@ -840,12 +918,13 @@
 									<div class="item-price">
 										<span class="prev-price">$ 25.00</span>$ 35.00
 									</div>
-								</div>
+							</div>
 							</figcaption>
 
 							<div class="product-item">
 								<figure class="product-style">
-									<img src="{{ asset('booksaw/images/product-item2.jpg') }}" alt="Books" class="product-item">
+									<img src="{{ asset('booksaw/images/product-item2.jpg') }}" alt="Books"
+										class="product-item">
 									<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to
 										Cart</button>
 								</figure>
@@ -919,7 +998,8 @@
 
 								<figure>
 									<a href="#" class="image-hvr-effect">
-										<img src="{{ asset('booksaw/images/post-img1.jpg') }}" alt="post" class="post-image">
+										<img src="{{ asset('booksaw/images/post-img1.jpg') }}" alt="post"
+											class="post-image">
 									</a>
 								</figure>
 
@@ -953,7 +1033,8 @@
 							<article class="column" data-aos="fade-up" data-aos-delay="200">
 								<figure>
 									<a href="#" class="image-hvr-effect">
-										<img src="{{ asset('booksaw/images/post-img2.jpg') }}" alt="post" class="post-image">
+										<img src="{{ asset('booksaw/images/post-img2.jpg') }}" alt="post"
+											class="post-image">
 									</a>
 								</figure>
 								<div class="post-item">
@@ -986,7 +1067,8 @@
 							<article class="column" data-aos="fade-up" data-aos-delay="400">
 								<figure>
 									<a href="#" class="image-hvr-effect">
-										<img src="{{ asset('booksaw/images/post-img3.jpg') }}" alt="post" class="post-image">
+										<img src="{{ asset('booksaw/images/post-img3.jpg') }}" alt="post"
+											class="post-image">
 									</a>
 								</figure>
 								<div class="post-item">
@@ -1221,7 +1303,13 @@
 		integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
 		crossorigin="anonymous"></script>
 	<script src="{{ asset('booksaw/js/plugins.js') }}"></script>
-	<script src="{{ asset('booksaw/js/script.js') }}"></script>
+	<script src="{{ asset('booksaw/js/script.js') }}">
+	document.querySelector('.btn-flat.float-end').addEventListener('click', function (e) {
+    if (!confirm("Are you sure you want to sign out?")) {
+        e.preventDefault();
+    }
+});
+</script>
 
 </body>
 

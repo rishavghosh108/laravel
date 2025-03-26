@@ -3,7 +3,7 @@
 </head>
 
 <body class="login-page bg-body-secondary text-center d-flex align-items-center justify-content-center vh-100">
-  
+
   <div class="login-box">
 
     <div class="card --bs-warning">
@@ -13,15 +13,19 @@
         <form action="/login" method="post">
           @csrf
           <div class="input-group mb-3">
-            <input type="email" name="email" class="form-control" placeholder="Email" required/>
+            <input type="email" name="email" class="form-control" placeholder="Email" required />
             <div class="input-group-text"><span class="bi bi-envelope"></span></div>
-            <div class="error_group"><ul class="error">@error('email') {{ $message }} @enderror</ul></div>
+            <div class="error_group">
+              <ul class="error">@error('email') {{ $message }} @enderror</ul>
+            </div>
           </div>
 
           <div class="input-group mb-3">
-            <input type="password" name="password" class="form-control" placeholder="Password" required/>
+            <input type="password" name="password" class="form-control" placeholder="Password" required />
             <div class="input-group-text"><span class="bi bi-lock-fill"></span></div>
-            <div class="error_group"><ul class="error">@error('password') {{ $message }} @enderror</ul></div>
+            <div class="error_group">
+              <ul class="error">@error('password') {{ $message }} @enderror</ul>
+            </div>
           </div>
 
           <div class="row">
@@ -51,11 +55,12 @@
 
 <style>
   .login-box {
-    max-width: 400px; 
+    max-width: 400px;
     width: 100%;
     padding: 5px;
   }
-  .error_group{
+
+  .error_group {
     max-width: 343px;
     width: 100%;
     justify-content: center;
@@ -63,6 +68,7 @@
     position: absolute;
     top: -10px;
   }
+
   .error {
     text-align: center;
     color: red;

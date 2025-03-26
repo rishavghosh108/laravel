@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Book;
+use App\Models\User;
 
 class DashboardController extends Controller
 {
     public function get(Request $request){
-        return view('admin.dashboard');
+        $bookCount = Book::totalBooks();
+        $userCount = User::totalUsers();
+        return view('admin.dashboard', compact(['bookCount','userCount']));
     }
 }

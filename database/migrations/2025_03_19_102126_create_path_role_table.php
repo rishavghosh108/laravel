@@ -20,6 +20,8 @@ return new class extends Migration
             $table->foreign('path_id')->references('id')->on('paths')->onDelete('cascade');
             $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
 
+            $table->unique(['path_id','role_id']);
+
             $table->timestamps();
         });
     }

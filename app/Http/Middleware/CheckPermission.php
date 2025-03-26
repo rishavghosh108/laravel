@@ -17,22 +17,34 @@ class CheckPermission
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(!Auth::check()){
+
+        if(!Auth::check() || Auth::user()->status === "suspended"){
+            Auth::logout();
             return redirect('/login');
         }
 
-        // $path = $request->path();
-        // $role = User::with('Role')->find(Auth::user()->id);
-        // $role = User::with('role')->find(Auth::user()->id) ?? 'No role assigned';
-        // $user = User::with('roles')->find(Auth::user()->id);
-        // $role = $user->first()->role ?? 'No role assigned';
+        $path = $request->path();
 
+        $hasAccess = User::join('user_role', 'users.id', '=', 'user_role.user_id')
+            ->join('roles', 'roles.id', '=', 'user_role.role_id')
+            ->join('path_role', 'roles.id', '=', 'path_role.role_id')
+            ->join('paths', 'paths.id', '=', 'path_role.path_id')
+            ->where('user_role.user_id', Auth::id())
+            ->where('paths.path', $path)
+            ->exists();
+
+        // $hasAccess = User::with('roles')
+        //     ->where('id', Auth::id())
+            // ->where('roles.paths.path', $path)
+            // ->exists();
+            
+            // dd($hasAccess);
+
+
+        if(!$hasAccess){
+            return redirect('/home');
+        }
         
-
-        // var_dump($user);
-
-
-        // echo "$path, $role";
         return $next($request);
     }
 }

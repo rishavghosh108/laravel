@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable
 {
@@ -21,7 +22,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'role'
+        'role',
+        'status',
+        'added_by',
+        'suspended_by'
     ];
 
     /**
@@ -39,27 +43,54 @@ class User extends Authenticatable
      *
      * @return array<string, string>
      */
-    protected function casts(): array
-    {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
-    }
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'password' => 'hashed',
+    ];
 
     public function roles()
     {
-        return $this->belongsToMany(Role::class, 'user_roles', 'user_id', 'role_id');
+        return $this->belongsToMany(Role::class, 'user_role');
     }
 
     public function isSuperAdmin()
     {
-        return true;
+        $user = User::join('user_role', 'users.id', '=', 'user_role.user_id')
+            ->join('roles', 'roles.id', '=', 'user_role.role_id')
+            ->where('user_role.user_id', Auth::id())
+            ->where('user_role.role_id', 1)
+            ->exists();
+
+        // $user1 = User::whereHas('roles')
+        //     ->where('user_role.role_id', 1)
+        //     ->where('id', Auth::id())
+        //     ->exists();
+
+        // dd($user1);
+
+        return ($user) ? true : false;
+
     }
 
-    public function isNotSuperAdmin()
+    public static function totalUsers(){
+        return User::count();
+    }
+
+    public static function totalUsersByRole($roleId)
     {
-        return false;
+        return self::join('user_role', 'users.id', '=', 'user_role.user_id')
+            ->where('user_role.role_id', $roleId)
+            ->count();
+    }
+
+    public function addedBy()
+    {
+        return $this->belongsTo(User::class, 'added_by');
+    }
+
+    public function suspendedBy()
+    {
+        return $this->belongsTo(User::class, 'suspended_by');
     }
 
 }
